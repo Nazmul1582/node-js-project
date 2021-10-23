@@ -1,0 +1,14 @@
+const express = require('express');
+const app = express();
+require('dotenv').config();
+
+app.get('/', (req, res) => {
+    res.status(200).send('<h1> Welcome To Our Website </h1>');
+});
+
+app.get('*', (req, res) => {
+    res.status(400).send("<h1>No API found with this route</1>")
+})
+
+const port = process.env.PORT || 3000
+app.listen(port, () => console.log(`Server is listening at port ${port}`));
