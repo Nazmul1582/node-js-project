@@ -17,6 +17,7 @@ const studentSchema = new Schema({
         unique: true
     },
     password: String,
+    image: String,
     address: {
         district: String,
         division: String,
@@ -39,7 +40,7 @@ const studentSchema = new Schema({
 });
 
 studentSchema.pre('save', function(next){
-    const student = this.studentSchema;
+    const student = this;
     if(this.isModified('password') || this.isNew()){
         bcrypt.genSalt(10, function(err, salt){
             if(err){

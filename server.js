@@ -2,10 +2,15 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const morgan = require('morgan');
+// all routes
+const studentRoutes = require('./routes/student');
 require('dotenv').config();
 
-
+app.use(express.json());
 app.use(morgan('tiny'));
+app.use('/student', studentRoutes);
+
+
 app.get('/', (req, res) => {
     res.status(200).send('<h1> Welcome To Our Website </h1>');
 });
